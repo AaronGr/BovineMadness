@@ -23,20 +23,22 @@ class FBullCowGame {
 public:
 	FBullCowGame();
 
+	bool IsGameWon() const;
 	int32 GetMaxTries() const;
 	int32 GetCurrentTry() const;
 	int32 GetHiddenWordLength() const;
-	bool IsGameWon() const;
 	EWordStatus CheckGuessValidity(FString) const;
-
+	
 	void Reset(); //TODO make a more rich return value.
-
-
-	FBullCowCount SubmitGuess(FString);
+	FBullCowCount SubmitValidGuess(FString);
 
 private:
+	bool bGameWon;
 	int32 myCurrentTry;
 	int32 myMaxTries;
 	FString myHiddenWord;
+
+	bool IsIsogram(FString) const;
+	bool IsLowercase(FString) const;
 
 };
